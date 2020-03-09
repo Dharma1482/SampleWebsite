@@ -16,11 +16,6 @@ variables:
 
 steps:
 - task: NuGetToolInstaller@1
-- task: PublishBuildArtifacts@1
-- task: NuGetToolInstaller@1
-  inputs:
-    versionSpec: 
-    checkLatest: true
 
 - task: NuGetCommand@2
   inputs:
@@ -37,5 +32,7 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: PublishBuildArtifacts@1
 
 
