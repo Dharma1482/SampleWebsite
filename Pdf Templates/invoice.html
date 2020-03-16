@@ -1,0 +1,483 @@
+﻿@using SampleWebsite.Models;
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice Bill</title>
+    <style type="text/css">
+        /* Client-specific Styles */
+        #outlook a {
+            padding: 0;
+        }
+        /* Force Outlook to provide a "view in browser" menu link. */
+        body {
+            width: 100% !important;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        /* Prevent Webkit and Windows Mobile platforms from changing default font sizes, while not breaking desktop design. */
+        .ExternalClass {
+            width: 100%;
+        }
+            /* Force Hotmail to display emails at full width */
+            .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+                line-height: 100%;
+            }
+        /* Force Hotmail to display normal line spacing.*/
+        #backgroundTable {
+            margin: 0;
+            padding: 0;
+            width: 100% !important;
+            line-height: 100% !important;
+        }
+
+        img {
+            outline: none;
+            text-decoration: none;
+            border: none;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        a img {
+            border: none;
+        }
+
+        .image_fix {
+            display: block;
+        }
+
+        p {
+            margin: 0px 0px !important;
+        }
+
+        table td {
+            border-collapse: collapse;
+        }
+
+        table {
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        a {
+            color: #0a8cce;
+            text-decoration: none;
+            text-decoration: none !important;
+        }
+
+        /*STYLES*/
+        table[class=full] {
+            width: 100%;
+            clear: both;
+        }
+
+        .heading {
+            font-family: Arial;
+            font-weight: 600;
+            margin: 5px;
+        }
+
+        .hr {
+            background: #a7a7a7;
+            height: 1px;
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .text-bg {
+            background: #f7f7f7;
+            padding: 3px;
+            font-family: Helvetica, arial, sans-serif;
+            font-weight: 100;
+            margin: 5px;
+            font-size: 14px;
+            border-radius: 2px;
+            padding: 6px;
+        }
+
+        .main-head-bg {
+            background: #8d99a7;
+        }
+
+        .main-head {
+            color: #fff;
+            text-align: center;
+            font-family: Helvetica, arial, sans-serif;
+            font-weight: 100;
+        }
+
+        .grid-table thead tr th, .grid-table tbody tr td {
+            font-family: Helvetica, arial, sans-serif;
+            font-weight: 400;
+            padding: 10px 0px;
+            border-right: 1px #ddd solid;
+        }
+
+        .grid-table thead tr th {
+            border-bottom: 1px #ddd solid;
+            text-align: center;
+        }
+
+        .grid-table {
+            border: 1px solid #ccc;
+        }
+
+        table > tbody > tr > td {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+            width: 50%;
+            padding: 7px;
+        }
+
+        .text-left {
+            text-align: left;
+            width: 50%;
+            padding: 7px;
+        }
+        /*IPAD STYLES*/
+        @Report.MediaRes only screen and (max-width: 640px) {
+            a [href^="tel"], a[href^="sms"] {
+                text-decoration: none;
+                color: #0a8cce; /* or whatever your want */
+                pointer-events: none;
+                cursor: default;
+            }
+
+            .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+                text-decoration: default;
+                color: #0a8cce !important;
+                pointer-events: auto;
+                cursor: default;
+            }
+
+            table[class=devicewidth] {
+                width: 440px !important;
+                text-align: center !important;
+            }
+
+            table[class=devicewidthinner] {
+                width: 420px !important;
+                text-align: center !important;
+            }
+
+            img[class=banner] {
+                width: 440px !important;
+                height: 880px !important;
+            }
+
+            img[class=banner2] {
+                width: 440px !important;
+                height: 185px !important;
+            }
+
+            img[class=colimg2] {
+                width: 440px !important;
+                height: 550px !important;
+            }
+
+            img[class=colimg4] {
+                width: 440px !important;
+                height: 590px !important;
+            }
+
+            img[class=colimg5] {
+                width: 440px !important;
+                height: 410px !important;
+            }
+
+            .align {
+                text-align: left;
+            }
+        }
+        /*IPHONE STYLES*/
+        @Report.MediaRes only screen and (max-width: 480px) {
+            a[href^="tel"], a[href^="sms"] {
+                text-decoration: none;
+                color: #0a8cce; /* or whatever your want */
+                pointer-events: none;
+                cursor: default;
+            }
+
+            .contact {
+                display: none;
+            }
+
+            .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+                text-decoration: default;
+                color: #0a8cce !important;
+                pointer-events: auto;
+                cursor: default;
+            }
+
+            table[class=devicewidth] {
+                width: 280px !important;
+                text-align: center !important;
+            }
+
+            table[class=devicewidthinner] {
+                width: 260px !important;
+                text-align: center !important;
+            }
+
+            img[class=banner] {
+                width: 280px !important;
+                height: 560px !important;
+            }
+
+            img[class=banner2] {
+                width: 280px !important;
+                height: 120px !important;
+            }
+
+            img[class=colimg2] {
+                width: 280px !important;
+                height: 350px !important;
+            }
+
+            img[class=colimg3] {
+                width: 280px !important;
+                height: 50px !important;
+            }
+
+            img[class=colimg4] {
+                width: 280px !important;
+                height: 375px !important;
+            }
+
+            img[class=colimg5] {
+                width: 280px !important;
+                height: 260px !important;
+            }
+
+            td[class=mobile-hide] {
+                display: none !important;
+            }
+
+            td[class="padding-bottom25"] {
+                padding-bottom: 25px !important;
+                border-right: 1px #ddd solid;
+                border-left: 1px #ddd solid;
+                text-align: center;
+            }
+
+            .align {
+                text-align: center !important;
+            }
+        }
+    </style>
+</head>
+<body style="  width: 100% !important;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;margin: 0;padding: 0;">
+
+
+    <!-- Start of head -->
+    <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" st-sortable="banner" style=" margin: 0;padding: 0;width: 100% !important;line-height: 100% !important; border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+        <tbody>
+            <tr>
+                <td>
+                    <table width="800" cellpadding="0" cellspacing="0" border="0" align="center" style="text-align: center !important;">
+                        <tbody>
+                            <tr>
+                                <td width="100%" style="background: #eef3f9;     padding: 5px;">
+                                    <table width="800" align="center" cellspacing="0" cellpadding="0" border="0" style="text-align: center !important;">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:25%">
+                                                    <a target="_blank" href="#">
+                                                        <img src="@Model.SiteUrl/content/image/cargoquin_3pl_logo.png" alt="" border="0" style="display:block; border:none; outline:none; text-decoration:none; width:214px;" />
+                                                    </a>
+                                                </td>
+                                                <td style="width:34%">
+                                                    <table style="text-align: center !important;">
+                                                        <tr>
+                                                            <td style="text-align:center;">
+                                                                <h2 style=" font-family: Arial;font-weight: 600;margin: 5px;">Hiiiii</h2>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="text-align:center;"><h4 style=" font-family: Arial;font-weight: 600;margin: 5px;">dfqwtdf</h4></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="text-align:center;"><h4 style=" font-family: Arial;font-weight: 600;margin: 5px;">hgweduygewd</h4></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td style="width:43%">
+                                                    <table style="background: #d1ddea;text-align: center !important;">
+                                                        <tr>
+                                                            <td>
+                                                                <table style="text-align: center !important;">
+                                                                    <tr>
+                                                                        <td style="text-align:right;"><h5 style=" font-family: Arial;font-weight: 600;margin: 5px;"><b>@Report.Date </b></h5></td>
+                                                                        <td style="text-align:right;"><h5 style=" font-family: Arial;font-weight: 600;margin: 5px;">@Model.Date @Model.Time</h5></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <table style="text-align: center !important;">
+                                                                    <tr>
+                                                                        <td style="text-align:right;"><h5 style=" font-family: Arial;font-weight: 600;margin: 5px;"><b>Rfcgsdfg </b></h5></td>
+                                                                        <td style="text-align:right;"><h5 style=" font-family: Arial;font-weight: 600;margin: 5px;"></h5>24Aug2020</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <table style="text-align: center !important;">
+                                                                    <tr></tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!-- end of image -->
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="text-align: center;">
+                                    <h4 style="margin: 10px;margin-left:10px; font-family: Arial;font-weight: 600;margin: 5px;">>@Model.Name</h4>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- End of head -->
+    <!-- Start of body -->
+    <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" st-sortable="banner" style=" margin: 0;padding: 0;width: 100% !important;line-height: 100% !important; border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+        <tbody>
+            <tr>
+                <td>
+                    <table width="800" cellpadding="0" cellspacing="0" border="0" align="center" style="text-align: center !important;">
+                        <tbody>
+                            <tr>
+                                <td><span style=" background: #a7a7a7;height: 1px;width: 100%;display: block;margin-bottom: 10px;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><h4 style="margin-bottom:10px; font-family: Arial;font-weight: 600;margin: 5px;">Invoice :</h4></td>
+                            </tr>
+                            <tr style="border: 1px solid #a7a7a7;">
+                                <td>
+                                    <table width="100%" style="text-align: center !important;">
+                                        <tbody>
+                                            <tr>
+                                                <td width="33.3%">
+                                                    <h5 style="  background: #f7f7f7;padding: 3px;font-family: Helvetica, arial, sans-serif;font-weight: 100;margin: 5px;font-size: 14px;border-radius: 2px;padding: 6px;">gvdchasdvd</h5>
+                                                </td>
+                                                <td width="33.3%">
+                                                    <h5 style="  background: #f7f7f7;padding: 3px;font-family: Helvetica, arial, sans-serif;font-weight: 100;margin: 5px;font-size: 14px;border-radius: 2px;padding: 6px;">ghdvcasvds</h5>
+                                                </td>
+                                                <td width="33.3%">
+                                                    <h5 style="  background: #f7f7f7;padding: 3px;font-family: Helvetica, arial, sans-serif;font-weight: 100;margin: 5px;font-size: 14px;border-radius: 2px;padding: 6px;">dhasdhgvbdh</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="33.3%">
+                                                    <h5 style="  background: #f7f7f7;padding: 3px;font-family: Helvetica, arial, sans-serif;font-weight: 100;margin: 5px;font-size: 14px;border-radius: 2px;padding: 6px;">asdhasgdh</h5>
+                                                </td>
+                                                <td width="33.3%">
+                                                    <h5 style="  background: #f7f7f7;padding: 3px;font-family: Helvetica, arial, sans-serif;font-weight: 100;margin: 5px;font-size: 14px;border-radius: 2px;padding: 6px;">ghdfshdgasdhasd</h5>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <table width="100%" style="margin-top: 15px;text-align: center !important;">
+                                        <tbody>
+                                            <tr>
+                                                <td style="background: #8d99a7;">
+                                                    <h2 style="text-align:center">dqwedqwew</h2>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <table width="100%" style=" border: 1px solid #ccc;text-align: center !important;">
+                                        <thead>
+                                            <tr>
+                                                <th align="center" style="font-weight:bold; border-bottom: 1px #ddd solid; text-align: center; background: #238dcb; color: #fff;  font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;">Item</th>
+                                                <th align="center" style="font-weight:bold; border-bottom: 1px #ddd solid; text-align: center; background: #238dcb; color: #fff;  font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;">Desc</th>
+                                                <th align="center" style="font-weight:bold; border-bottom: 1px #ddd solid; text-align: center; background: #238dcb; color: #fff;  font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;">Qty</th>
+                                                <th align="center" style="font-weight:bold; border-bottom: 1px #ddd solid; text-align: center; background: #238dcb; color: #fff;  font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;">Quanity Received</th>
+                                                <th align="center" style="font-weight:bold; border-bottom: 1px #ddd solid; text-align: center; background: #238dcb; color: #fff;  font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;">Total Pallets</th>
+                                                <th align="center" style="font-weight:bold; border-bottom: 1px #ddd solid; text-align: center; background: #238dcb; color: #fff;  font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;">Total Boxes</th>
+                                                <!--<th align="right">@Report.Bin</th>-->
+                                                <th align="center" style="font-weight:bold; border-bottom: 1px #ddd solid; text-align: center; background: #238dcb; color: #fff;  font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;">Wire1</th>
+                                                <th align="center" style="font-weight:bold; border-bottom: 1px #ddd solid; text-align: center; background: #238dcb; color: #fff;  font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;">Wire1</th>
+                                                <th align="center" style="font-weight:bold; border-bottom: 1px #ddd solid; text-align: center; background: #238dcb; color: #fff;  font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;">122</th>
+                                                <th align="center" style="font-weight:bold; border-bottom: 1px #ddd solid; text-align: center; background: #238dcb; color: #fff;  font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;">22</th>
+                                                <th align="center" style="font-weight:bold; border-bottom: 1px #ddd solid; text-align: center; background: #238dcb; color: #fff;  font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;">322</th>
+                                                <th align="center" style="font-weight:bold; border-bottom: 1px #ddd solid; text-align: center; background: #238dcb; color: #fff;  font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;">22</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!--@{ foreach(var product in Model.ProductDetails) {-->
+                                            <tr>
+                                                <td style=" font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;" align="center">Wire1</td>
+                                                <td style=" font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;" align="center">Description</td>
+                                                <td style=" font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;" align="center">PSQty</td>
+                                                <td style=" font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;" align="center">Quantity</td>
+                                                <td style=" font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;" align="center">TotalPallets</td>
+                                                <td style=" font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;" align="center">@product.TotalBoxes</td>
+                                                <!--<td align="right">@product.Bin</td>-->
+                                                <td style=" font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;" align="center">OSD</td>
+                                                <td style=" font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;" align="center">Supplier</td>
+                                                <td style=" font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;" align="center">Lot</td>
+                                                <td style=" font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;" align="center">QualityStatus</td>
+                                                <td style=" font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;" align="center">ShippingWay</td>
+                                                <td style=" font-family: Helvetica, arial, sans-serif; font-weight: 400;  padding: 10px 0px; border-right: 1px #ddd solid;" align="center">UOM</td>
+                                            </tr>
+                                            <!--}
+                                            }-->
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" st-sortable="banner" style=" margin: 0;padding: 0;width: 100% !important;line-height: 100% !important;">
+        <tbody>
+            <tr>
+                <td>
+                    <table width="800" cellpadding="0" cellspacing="0" border="0" align="center" style="border:none; text-align: center !important;">
+                    </table>
+                </td>
+            </tr>
+          
+        </tbody>
+
+    </table>
+
+    <!-- End of body -->
+
+</body>
+</html>

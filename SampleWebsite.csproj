@@ -46,9 +46,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=17.4460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.HtmlToPdfConverter.QtWebKit.WinForms.17.4.0.46\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.HtmlConverter.Base, Version=17.4460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.HtmlToPdfConverter.QtWebKit.WinForms.17.4.0.46\lib\net46\Syncfusion.HtmlConverter.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base, Version=17.4460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.HtmlToPdfConverter.QtWebKit.WinForms.17.4.0.46\lib\net46\Syncfusion.Pdf.Base.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -121,9 +134,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UIController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,12 +146,204 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\animate.css" />
+    <Content Include="css\bootstrap-responsive.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\cslider.css" />
+    <Content Include="css\custom-fonts.css" />
+    <Content Include="css\fancybox\blank.gif" />
+    <Content Include="css\fancybox\fancybox_loading.gif" />
+    <Content Include="css\fancybox\fancybox_overlay.png" />
+    <Content Include="css\fancybox\fancybox_sprite.png" />
+    <Content Include="css\fancybox\jquery.fancybox.css" />
+    <Content Include="css\flexslider.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\jcarousel.css" />
+    <Content Include="css\overwrite.css" />
+    <Content Include="css\slitslider.css" />
+    <Content Include="css\style.css" />
+    <Content Include="FlatterTemplate\404.html" />
+    <Content Include="FlatterTemplate\about.html" />
+    <Content Include="FlatterTemplate\animations.html" />
+    <Content Include="FlatterTemplate\blog-left-sidebar.html" />
+    <Content Include="FlatterTemplate\blog-right-sidebar.html" />
+    <Content Include="FlatterTemplate\components.html" />
+    <Content Include="FlatterTemplate\contact.html" />
+    <Content Include="FlatterTemplate\icon-variations.html" />
+    <Content Include="FlatterTemplate\icons.html" />
+    <Content Include="FlatterTemplate\index-alt2.html" />
+    <Content Include="FlatterTemplate\index-alt3.html" />
+    <Content Include="FlatterTemplate\index.html" />
+    <Content Include="FlatterTemplate\portfolio-2cols.html" />
+    <Content Include="FlatterTemplate\portfolio-3cols.html" />
+    <Content Include="FlatterTemplate\portfolio-4cols.html" />
+    <Content Include="FlatterTemplate\portfolio-detail.html" />
+    <Content Include="FlatterTemplate\post-left-sidebar.html" />
+    <Content Include="FlatterTemplate\post-right-sidebar.html" />
+    <Content Include="FlatterTemplate\pricingbox.html" />
+    <Content Include="FlatterTemplate\Readme.txt" />
+    <Content Include="FlatterTemplate\table.html" />
+    <Content Include="FlatterTemplate\testimonials.html" />
+    <Content Include="FlatterTemplate\typography.html" />
     <Content Include="favicon.ico" />
+    <Content Include="font\customicon\Icons.svg" />
+    <Content Include="font\fontawesome\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="ico\favicon.ico" />
+    <Content Include="ico\favicon.png" />
+    <Content Include="img\avatar.png" />
+    <Content Include="img\bodybg\bg1.png" />
+    <Content Include="img\bodybg\bg10.png" />
+    <Content Include="img\bodybg\bg2.png" />
+    <Content Include="img\bodybg\bg3.jpg" />
+    <Content Include="img\bodybg\bg4.png" />
+    <Content Include="img\bodybg\bg5.png" />
+    <Content Include="img\bodybg\bg6.png" />
+    <Content Include="img\bodybg\bg7.png" />
+    <Content Include="img\bodybg\bg8.jpg" />
+    <Content Include="img\bodybg\bg9.png" />
+    <Content Include="img\dummies\blog\65x65\thumb1.jpg" />
+    <Content Include="img\dummies\blog\65x65\thumb2.jpg" />
+    <Content Include="img\dummies\blog\65x65\thumb3.jpg" />
+    <Content Include="img\dummies\blog\img1.jpg" />
+    <Content Include="img\dummies\blog\img2.jpg" />
+    <Content Include="img\dummies\blog\img3.jpg" />
+    <Content Include="img\dummies\blog\thumbs\img1.jpg" />
+    <Content Include="img\dummies\blog\thumbs\img2.jpg" />
+    <Content Include="img\dummies\blog\thumbs\img3.jpg" />
+    <Content Include="img\dummies\blog\thumbs\img4.jpg" />
+    <Content Include="img\dummies\blog\thumbs\no-thumb.jpg" />
+    <Content Include="img\dummies\blog\thumbs\quote-thumb.jpg" />
+    <Content Include="img\dummies\blog\thumbs\small1.jpg" />
+    <Content Include="img\dummies\clients\client1.png" />
+    <Content Include="img\dummies\clients\client2.png" />
+    <Content Include="img\dummies\clients\client3.png" />
+    <Content Include="img\dummies\clients\client4.png" />
+    <Content Include="img\dummies\clients\client5.png" />
+    <Content Include="img\dummies\clients\client6.png" />
+    <Content Include="img\dummies\dummy-1.jpg" />
+    <Content Include="img\dummies\team1.jpg" />
+    <Content Include="img\dummies\team2.jpg" />
+    <Content Include="img\dummies\team3.jpg" />
+    <Content Include="img\dummies\team4.jpg" />
+    <Content Include="img\dummies\testimonial-author1.png" />
+    <Content Include="img\glyphicons-halflings-white.png" />
+    <Content Include="img\glyphicons-halflings.png" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\nivo-bullets.png" />
+    <Content Include="img\slides\nivo\bg-1.jpg" />
+    <Content Include="img\slides\nivo\bg-2.jpg" />
+    <Content Include="img\slides\nivo\bg-3.jpg" />
+    <Content Include="img\slides\parallax\1.png" />
+    <Content Include="img\slides\parallax\2.png" />
+    <Content Include="img\slides\parallax\3.png" />
+    <Content Include="img\slides\parallax\4.png" />
+    <Content Include="img\slides\parallax\arrows.png" />
+    <Content Include="img\slides\parallax\bg1.jpg" />
+    <Content Include="img\slides\slitslider\1.jpg" />
+    <Content Include="img\slides\slitslider\2.jpg" />
+    <Content Include="img\slides\slitslider\3.jpg" />
+    <Content Include="img\slides\slitslider\4.jpg" />
+    <Content Include="img\slides\slitslider\5.jpg" />
+    <Content Include="img\works\full\image-01-full.jpg" />
+    <Content Include="img\works\full\image-02-full.jpg" />
+    <Content Include="img\works\full\image-03-full.jpg" />
+    <Content Include="img\works\full\image-04-full.jpg" />
+    <Content Include="img\works\full\image-05-full.jpg" />
+    <Content Include="img\works\full\image-06-full.jpg" />
+    <Content Include="img\works\full\image-07-full.jpg" />
+    <Content Include="img\works\full\image-08-full.jpg" />
+    <Content Include="img\works\thumbs\image-01.jpg" />
+    <Content Include="img\works\thumbs\image-02.jpg" />
+    <Content Include="img\works\thumbs\image-03.jpg" />
+    <Content Include="img\works\thumbs\image-04.jpg" />
+    <Content Include="img\works\thumbs\image-05.jpg" />
+    <Content Include="img\works\thumbs\image-06.jpg" />
+    <Content Include="img\works\thumbs\image-07.jpg" />
+    <Content Include="img\works\thumbs\image-08.jpg" />
+    <Content Include="index.html" />
+    <Content Include="js\animate.js" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\custom.js" />
+    <Content Include="js\google-code-prettify\prettify.css" />
+    <Content Include="js\google-code-prettify\prettify.js" />
+    <Content Include="js\jcarousel\jquery.jcarousel.min.js" />
+    <Content Include="js\jcarousel\setting.js" />
+    <Content Include="js\jquery.ba-cond.min.js" />
+    <Content Include="js\jquery.cookie.js" />
+    <Content Include="js\jquery.cslider.js" />
+    <Content Include="js\jquery.easing.1.3.js" />
+    <Content Include="js\jquery.fancybox-media.js" />
+    <Content Include="js\jquery.fancybox.pack.js" />
+    <Content Include="js\jquery.flexslider.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.nivo.slider.js" />
+    <Content Include="js\jquery.slitslider.js" />
+    <Content Include="js\modernizr.custom.js" />
+    <Content Include="js\portfolio\jquery.quicksand.js" />
+    <Content Include="js\portfolio\setting.js" />
+    <Content Include="js\quicksand\jquery.quicksand.js" />
+    <Content Include="js\quicksand\setting.js" />
+    <Content Include="Pdf Templates\invoice - Copy.html" />
+    <Content Include="Pdf Templates\invoice.html" />
+    <Content Include="QtBinaries\icudt49.dll" />
+    <Content Include="QtBinaries\icuin49.dll" />
+    <Content Include="QtBinaries\icuuc49.dll" />
+    <Content Include="QtBinaries\imageformats\qdds.dll" />
+    <Content Include="QtBinaries\imageformats\qgif.dll" />
+    <Content Include="QtBinaries\imageformats\qicns.dll" />
+    <Content Include="QtBinaries\imageformats\qico.dll" />
+    <Content Include="QtBinaries\imageformats\qjp2.dll" />
+    <Content Include="QtBinaries\imageformats\qjpeg.dll" />
+    <Content Include="QtBinaries\imageformats\qmng.dll" />
+    <Content Include="QtBinaries\imageformats\qsvg.dll" />
+    <Content Include="QtBinaries\imageformats\qtga.dll" />
+    <Content Include="QtBinaries\imageformats\qtiff.dll" />
+    <Content Include="QtBinaries\imageformats\qwbmp.dll" />
+    <Content Include="QtBinaries\imageformats\qwebp.dll" />
+    <Content Include="QtBinaries\libEGL.dll" />
+    <Content Include="QtBinaries\libGLESv2.dll" />
+    <Content Include="QtBinaries\platforms\qminimal.dll" />
+    <Content Include="QtBinaries\platforms\qoffscreen.dll" />
+    <Content Include="QtBinaries\platforms\qwindows.dll" />
+    <Content Include="QtBinaries\Qt5Core.dll" />
+    <Content Include="QtBinaries\Qt5Gui.dll" />
+    <Content Include="QtBinaries\Qt5Multimedia.dll" />
+    <Content Include="QtBinaries\Qt5MultimediaWidgets.dll" />
+    <Content Include="QtBinaries\Qt5Network.dll" />
+    <Content Include="QtBinaries\Qt5OpenGL.dll" />
+    <Content Include="QtBinaries\Qt5Positioning.dll" />
+    <Content Include="QtBinaries\Qt5PrintSupport.dll" />
+    <Content Include="QtBinaries\Qt5Qml.dll" />
+    <Content Include="QtBinaries\Qt5Quick.dll" />
+    <Content Include="QtBinaries\Qt5Sensors.dll" />
+    <Content Include="QtBinaries\Qt5Sql.dll" />
+    <Content Include="QtBinaries\Qt5Svg.dll" />
+    <Content Include="QtBinaries\Qt5WebChannel.dll" />
+    <Content Include="QtBinaries\Qt5WebKit.dll" />
+    <Content Include="QtBinaries\Qt5WebKitWidgets.dll" />
+    <Content Include="QtBinaries\Qt5Widgets.dll" />
+    <Content Include="QtBinaries\Syncfusion.WebKitWrapper.dll" />
+    <Content Include="QtBinaries\zlib1.dll" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="font\customicon\Icons.eot" />
+    <Content Include="font\customicon\Icons.ttf" />
+    <Content Include="font\customicon\Icons.woff" />
+    <Content Include="font\fontawesome\fontawesome-webfont.eot" />
+    <Content Include="font\fontawesome\fontawesome-webfont.ttf" />
+    <Content Include="font\fontawesome\fontawesome-webfont.woff" />
+    <Content Include="font\fontawesome\FontAwesome.otf" />
+    <None Include="Properties\PublishProfiles\SuryaCabels - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\SuryaCabels - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\SuryaCabels - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -148,6 +355,16 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="skins\blue.css" />
+    <Content Include="skins\default.css" />
+    <Content Include="skins\green.css" />
+    <Content Include="skins\kissme.css" />
+    <Content Include="skins\lime.css" />
+    <Content Include="skins\pink.css" />
+    <Content Include="skins\red.css" />
+    <Content Include="skins\rose.css" />
+    <Content Include="skins\sand.css" />
+    <Content Include="skins\yellow.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -162,10 +379,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\UI.cshtml" />
+    <Content Include="Views\Home\UIHtml.cshtml" />
+    <Content Include="Views\UI\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Pdf\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
